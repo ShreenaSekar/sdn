@@ -1,0 +1,33 @@
+vim-emu
+1) sudo apt-get install ansible git aptitude
+
+containernet installation
+2) cd
+3) git clone https://github.com/containernet/containernet.git
+4) cd ~/containernet/ansible
+5) sudo ansible-playbook -i "localhost," -c local install.yml
+6) cd ..
+7) sudo make develop
+
+vim-emu installation
+8) cd
+9) git clone https://osm.etsi.org/gerrit/osm/vim-emu.git
+10) cd ~/vim-emu/ansible
+11) sudo ansible-playbook -i "localhost," -c local install.yml
+12) cd ..
+13) sudo python3 setup.py develop
+
+First terminal
+14) sudo python3 examples/default_single_dc_topology.py
+
+second terminal
+15) sudo docker exec vim-emu vim-emu compute start -d dc1 -n vnf1
+16) sudo docker exec vim-emu vim-emu compute start -d dc1 -n vnf2
+17) sudo docker exec vim-emu vim-emu compute list
+
+First terminal 
+# press <ENTER> <ENTER>
+18) containernet> vnf1 ifconfig
+19) containernet> vnf1 ping -c2 vnf2
+
+

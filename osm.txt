@@ -1,0 +1,6 @@
+1) wget https://osm-download.etsi.org/ftp/osm-15.0-fifteen/install_osm.sh
+2) chmod +x install_osm.sh
+3)./install_osm.sh
+4) open osm at http://1.2.3.4 replacing "1.2.3.4" with the ip address of your host
+username:admin
+password:admin

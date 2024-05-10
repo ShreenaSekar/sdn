@@ -1,0 +1,28 @@
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 21805A48E6CBBA6B991ABE76646193862B759810
+sudo add-apt-repository ppa:katharaframework/kathara
+sudo apt update
+sudo apt install kathara
+kathara --version
+
+//topology
+//Download kathara-lab_basic-ipv4 zip file from GitHub.
+cd kathara-lab_basic-ipv4 
+kathara lstart
+//On pc1,pc2,pc3,r1,r2, perform the ip address command, to check the IPv4 addresses assigned to the interfaces.
+$ ip address
+//On pc1,pc2 and pc3 ,r1,r2,perform the routel command, to check the presence of a default route.
+$ routel
+$ kathara lconfig -n wireshark --add C
+//Open any browser on the host machine on localhost:3000 to open wireshark.
+//open pc3, inspect the arp cache. Execute a ping command towards pc2, inspect the arp cache again.
+$ arp -n
+$ ping 200.1.1.7
+$ arp -n
+//The receiver of the arp request learns the mac address of the other party, to avoid a new arp in opposite direction. Inspect arp cache in pc2.
+$ arp -n
+//Capture and inspect ARP packets from wireshark showing ARP request and reply.
+$ kathara lconfig -n wireshark --add B
+//On PC2 execute a ping command towards PC1
+$ ping 195.11.14.5
+//When ip traffic is addressed outside the local network, the sender needs the mac address of the router. ARP requests can get replies only within the local network.
+$ arp -n
