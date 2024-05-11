@@ -1,0 +1,23 @@
+$ sudo apt-get -y update
+$ sudo apt-get -y upgrade
+$ sudo apt-get -y install unzip
+$ sudo apt install default-jre
+$ sudo apt install default-jdk
+~$ ls -l /etc/alternatives/java
+$ echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
+$ sudo nano ~/.bashrc
+//edit JAVA_HOME path from java-8 to java-11
+$ curl -XGET -O https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.13.4/karaf-0.13.4.zip
+$ unzip karaf-0.13.4.zip
+~$ cd karaf-0.13.4/
+$ ls
+$ ./bin/karaf
+sudo mn --mac --arp --controller=remote,ip=127.0.0.1 //change ip to your system ip 
+mininet> net
+mininet> s1 ovs-ofctl show "s1"
+mininet> s1 ovs-ofctl add-flow "s1" priority=1,ip,nw_dst=<host2_ip>,actions=mod_dl_dst:<host2_mac>,output=2 //ip address h2 ifconfig -a
+mininet> s1 ovs-ofctl add-flow "s1" priority=1,ip,nw_dst=<host1_ip>,actions=mod_dl_dst:<host1_mac>,output=1 // ip address h1 ifconfig -a
+mininet> s1 ovs-ofctl dump-flows "s1"
+mininet> h1 ping -c2 h2
+//open wireshark
+
